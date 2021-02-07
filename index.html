@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <title>hello</title>
+    <link rel="StyleSheet" href="styles.css">
+    <script src="Chart.min.js"></script>
+
+    <script src="sort.js"></script>
+
+</head>
+
+<body>
+
+    <hi>
+        <center>Sorting Visualizer</center>
+    </hi>
+    <hr />
+    <input type="button" value="Bubble Sort" onclick="bubbleSorting()">
+    <input type="button" value="Merge Sort" onclick="mergeSorting()">
+
+
+    <input type="button" value="Re-Generate Array" onclick="resetArray()">
+    <input type="button" value="Bar Chart" onclick="showBar()">
+    <input type="button" value="Polar Chart" onclick="showPolar()">
+    <hr />
+    <canvas id="myChart" width="400" height="150"></canvas>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+                    '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+                    '21', '22', '23', '24', '25', '26', '27', '28', '29', '30',
+                    '31', '32', '33', '34', '35', '36', '37', '38', '39', '40',
+                    '41', '42', '43', '44', '45', '46', '47', '48', '49', '50',
+                    '51', '52', '53', '54', '55', '56', '57', '58', '59', '60',
+                    '61', '62', '63', '64', '65', '66', '67', '68', '69', '70',
+                    '71', '72', '73', '74', '75', '76', '77', '78', '79', '80',
+                    '81', '82', '83', '84', '85', '86', '87', '88', '89', '90',
+                    '91', '92', '93', '94', '95', '96', '97', '98', '99', '100'],
+                datasets: [{
+                    data: array,
+                    backgroundColor: "rgba(138,43,226,0.5)",
+                    borderWidth: 2
+
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                }
+            }
+        });
+        function bubbleSorting() {
+            myChart.data.datasets[0].data = bubbleSortedArray;
+            myChart.update();
+        }
+        function mergeSorting() {
+            myChart.data.datasets[0].data = mergedArray;
+            myChart.update();
+        }
+        function quickSorting() {
+            myChart.data.datasets[0].data = quickSortedArray;
+            myChart.update();
+        }
+
+        function resetArray() {
+            generateArray();
+            bubbleSort(array);
+            myChart.data.datasets[0].data = array;
+            myChart.update();
+        }
+        function showBar() {
+            myChart.destroy();
+            myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+                        '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+                        '21', '22', '23', '24', '25', '26', '27', '28', '29', '30',
+                        '31', '32', '33', '34', '35', '36', '37', '38', '39', '40',
+                        '41', '42', '43', '44', '45', '46', '47', '48', '49', '50',
+                        '51', '52', '53', '54', '55', '56', '57', '58', '59', '60',
+                        '61', '62', '63', '64', '65', '66', '67', '68', '69', '70',
+                        '71', '72', '73', '74', '75', '76', '77', '78', '79', '80',
+                        '81', '82', '83', '84', '85', '86', '87', '88', '89', '90',
+                        '91', '92', '93', '94', '95', '96', '97', '98', '99', '100'],
+                    datasets: [{
+                        data: array,
+                        backgroundColor: "rgba(111,99,236,0.5)",
+                        borderWidth: 2
+
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    }
+                }
+            });
+
+
+        }
+        function showPolar() {
+            myChart.destroy();
+            myChart = new Chart(ctx, {
+                type: 'polarArea',
+                data: {
+                    labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+                        '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+                        '21', '22', '23', '24', '25', '26', '27', '28', '29', '30',
+                        '31', '32', '33', '34', '35', '36', '37', '38', '39', '40',
+                        '41', '42', '43', '44', '45', '46', '47', '48', '49', '50',
+                        '51', '52', '53', '54', '55', '56', '57', '58', '59', '60',
+                        '61', '62', '63', '64', '65', '66', '67', '68', '69', '70',
+                        '71', '72', '73', '74', '75', '76', '77', '78', '79', '80',
+                        '81', '82', '83', '84', '85', '86', '87', '88', '89', '90',
+                        '91', '92', '93', '94', '95', '96', '97', '98', '99', '100'],
+                    datasets: [{
+                        data: array,
+                        backgroundColor: "rgba(111,99,236,0.5)",
+                        borderWidth: 2
+
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    }
+                }
+            });
+
+
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>
